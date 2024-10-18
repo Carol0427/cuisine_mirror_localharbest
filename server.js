@@ -83,11 +83,17 @@ async function fetchFarmingPageHtml(zipCode, ingredient) {
 }
 
 // Sample route to check the server is working
-app.get('/FindFarmer', (req, res) => {
-  res.send('Server is running');
+app.get('/FindFarmer', async (req, res) => {
   const { zipCode, ingredient } = req.query;
-  const farmnlink = fetchFarmingPageHtml(zipCode, ingredient);
+  try {
+  const farmnlink = await fetchFarmingPageHtml(zipCode, ingredient);
   res.json({ farmnlink });
+  }
+  catch (error) {
+    // Handle errors
+    console.error("Error in /FindFarmer route:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 
