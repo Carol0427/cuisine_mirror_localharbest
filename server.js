@@ -12,7 +12,7 @@ async function fetchFarmingPageHtml(zipCode, ingredient) {
   try {
     console.log('Launching browser...');
     browser = await playwright.chromium.launch({
-      headless: false,
+      headless: true,
     });
 
     const context = await browser.newContext();
