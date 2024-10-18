@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-cleanup": "npx playwright install"
+    "heroku-cleanup": "npx playwright install && sudo npx playwright install-deps"
   },
   "keywords": [],
   "author": "",
