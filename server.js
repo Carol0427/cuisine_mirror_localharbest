@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const { chromium } = require('playwright');
+const playwright = require('playwright');
 app.use(express.json());
 //heroku
 async function fetchFarmingPageHtml(zipCode, ingredient) {
@@ -11,7 +11,7 @@ async function fetchFarmingPageHtml(zipCode, ingredient) {
 
   try {
     console.log('Launching browser...');
-    browser = await chromium.launch({
+    browser = await playwright.chromium.launch({
       headless: false,
     });
 
